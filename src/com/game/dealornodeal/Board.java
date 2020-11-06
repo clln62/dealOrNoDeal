@@ -2,6 +2,8 @@ package com.game.dealornodeal;
 
 import java.util.*;
 
+// TODO: decide if we want to keep board list static or not
+
 class Board {
     //    public static Map<Integer, Double> board = new HashMap<>();
     public static List<Case> board = new ArrayList<>();
@@ -21,12 +23,12 @@ class Board {
 
     }
 
-    public static void removeFromBoard(int caseNumber) {
+    public static void remove(int caseNumber) {
         // find the Case.caseNumber in board equal to caseNumber
         // remove chosen case from board
     }
 
-    public static void removeFromBoard(Case input) {
+    public static void remove(Case input) {
         // find the Case.caseNumber in board equal to caseNumber
         // remove chosen case from board
     }

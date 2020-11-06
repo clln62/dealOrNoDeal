@@ -1,5 +1,8 @@
 package com.game.dealornodeal;
 
+// TODO: create a game constructor that takes a prompter and initilizes fields
+// TODO: put all prompts/dialog in the prompter class
+// TODO: create a prompter and main class
 class Game {
     Board board = new Board();
     int[] eliminationRounds = {10, 5, 5, 3, 1};

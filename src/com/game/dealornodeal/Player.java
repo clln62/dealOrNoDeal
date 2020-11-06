@@ -45,7 +45,7 @@ class Player {
     }
 
     public void setChosenCase(Case chosenCase) {
-        Board.removeFromBoard(chosenCase);
+        Board.remove(chosenCase);
         this.chosenCase = chosenCase;
     }
 
