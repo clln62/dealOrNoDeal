@@ -11,6 +11,12 @@ class Host {
         this.name = name;
     }
 
+    public void askPlayerName() {
+        System.out.println("What is your name?");
+        // prompt player to enter name
+        // call setName()
+    }
+
     public void grabCase(int caseNumber) {
         // calls Board.giveCase(caseNumber)
             // gets case back from Board
@@ -37,6 +43,12 @@ class Host {
 
     public void presentDeal(double offerAmount) {
         System.out.println(name + ": Will you accept or decline " + offerAmount + "?");
+        // call dealOrNoDeal()
+    }
+
+    public void dealOrNoDeal() {
+        // yes or no console read line from user
+        System.out.println("Deal or no deal?");
     }
 
     public static String getName() {

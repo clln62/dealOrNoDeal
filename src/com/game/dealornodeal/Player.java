@@ -2,19 +2,28 @@ package com.game.dealornodeal;
 
 class Player {
     private String name;
+    private boolean offerAcceptance;
     public Case chosenCase;
+
 
 
     public Player() {
 
     }
 
+    private void acceptOrDeclineDeal() {
+        // ask player for deal or no deal response
+        // if deal call acceptDeal()
+        // if no deal call declineDeal()
+    }
+
     private void acceptDeal() {
-        // grab
-        System.out.println("The player has accepted the amount of: " );
+        System.out.println(getName() + " has accepted the amount of: " + Banker.getOfferAmount());
+        // end game
     }
 
     private void declineDeal() {
+        System.out.println(getName() + " has declined the amount of: " + Banker.getOfferAmount());
 
     }
 
@@ -47,5 +56,13 @@ class Player {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isOfferAcceptance() {
+        return offerAcceptance;
+    }
+
+    public void setOfferAcceptance(boolean offerAcceptance) {
+        this.offerAcceptance = offerAcceptance;
     }
 }
