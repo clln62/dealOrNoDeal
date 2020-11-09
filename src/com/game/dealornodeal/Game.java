@@ -1,14 +1,18 @@
 package com.game.dealornodeal;
 
+import com.game.dealornodeal.user.Prompter;
+
 // TODO: create a game constructor that takes a prompter and initilizes fields
 // TODO: put all prompts/dialog in the prompter class
-// TODO: create a prompter and main class
+// DONE: create a prompter and main class
 class Game {
     Board board = new Board();
     int[] eliminationRounds = {10, 5, 5, 3, 1};
     int pointer = 0;
+
     Player player = new Player();
     Host host = new Host();
+    Prompter prompter = new Prompter();
 
 
     public void playGame() {
