@@ -33,9 +33,7 @@ class Game {
         if (chosenCase >= 1 && chosenCase <= 26) {
             System.out.println(player.getName() + " has chosen " + chosenCase + " to hold onto through each round.");
             // DONE: revise player.chooseCase() to take in int chosenCase and find the case needed to save to player
-            // NOTE: Player does not have access to board, so I removed player.chooseCase() since choosing
-            //       work comes from Prompter and Game has access to board
-            player.setChosenCase(board.giveCase(chosenCase));
+            player.chooseCase(chosenCase);
             playGame();
         }
         // give invalid message and continue to call method until valid entry has been met

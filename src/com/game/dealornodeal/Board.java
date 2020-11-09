@@ -33,7 +33,7 @@ class Board {
         // remove chosen case from board
     }
 
-    public Case giveCase(int caseNumber) {
+    public static Case giveCase(int caseNumber) {
         // find the Case.caseNumber equal to caseNumber if exists
         // call removeFromBoard with caseNumber
 
