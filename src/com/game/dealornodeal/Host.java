@@ -42,14 +42,14 @@ class Host {
     }
 
     public void presentDeal(double offerAmount) {
-        System.out.println(name + ": Will you accept or decline " + offerAmount + "?");
-        // call dealOrNoDeal()
+        System.out.println("The banker has come back wih an offer of " + offerAmount + ". Will you accept or decline?");
     }
 
-    public void dealOrNoDeal() {
-        // yes or no console read line from user
-        System.out.println("Deal or no deal?");
-    }
+    // no longer needed - this is handled in the Prompter class
+//    public void dealOrNoDeal() {
+//        // yes or no console read line from user
+//        System.out.println("Deal or no deal?");
+//    }
 
     public static String getName() {
         return name;

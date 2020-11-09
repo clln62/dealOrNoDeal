@@ -11,7 +11,7 @@ class Player {
 
     }
 
-    private void acceptOrDeclineDeal() {
+    public void acceptOrDeclineDeal(String Response) {
         // ask player for deal or no deal response
         // if deal call acceptDeal()
         // if no deal call declineDeal()
@@ -27,11 +27,12 @@ class Player {
 
     }
 
-    public void chooseCase() {
-        // ask player what case they want
-        // find case in board that matches the case number submitted
-        // call setter for chosenCase with the case from Board
-    }
+    // no longer needed - work is done in Game - Player doesn't have access to Board
+//    public void chooseCase() {
+//        // ask player what case they want
+//        // find case in board that matches the case number submitted
+//        // call setter for chosenCase with the case from Board
+//    }
 
     public int eliminateCase() {
         // ask player what case they want
