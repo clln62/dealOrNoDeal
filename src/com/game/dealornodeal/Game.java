@@ -8,7 +8,7 @@ import com.game.dealornodeal.user.Prompter;
 // TODO: Revise all class methods that were once prompts and now rely on the Prompter class, look for notes throughout
 // TODO: refactor where needed here in Game if methods need it - building more methods to cover duplicates if needed
 
-class Game {
+public class Game {
     Board board = new Board();
     int[] eliminationRounds = {10, 5, 5, 3, 1};
     int pointer = 0;
