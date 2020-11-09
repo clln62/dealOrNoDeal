@@ -20,24 +20,45 @@ class Board {
         // set all to Field board
         // shuffle values with Collections.shuffle()
         // assign value to each caseNumber 1-26
+        Collections.shuffle(values);
 
+        // NOTE: This can be simplified, but was created this way for time purposes and to simply to reach MVP
+        for (int i = 0; i < values.size(); i++) {
+            // create a new Case
+            Case briefcase = new Case();
+            // add case number and case value to new Case
+            briefcase.setCaseNumber(i);
+            briefcase.setCaseValue(values.get(i));
+            // add new case to board
+            board.add(briefcase);
+        }
     }
 
     public static void remove(int caseNumber) {
         // find the Case.caseNumber in board equal to caseNumber
         // remove chosen case from board
+        board.remove(caseNumber);
     }
 
-    public static void remove(Case input) {
-        // find the Case.caseNumber in board equal to caseNumber
-        // remove chosen case from board
-    }
+    // this method is currently not being utilized - giveCase already does work of finding Case and calling remove with caseNumber
+//    public static void remove(Case input) {
+//        // find the Case.caseNumber in board equal to caseNumber
+//        // remove chosen case from board
+//    }
 
     public static Case giveCase(int caseNumber) {
+        Case returnCase = null;
+        // TODO: Establish what happens if the case called does not exist - this goes all the way back to Game
         // find the Case.caseNumber equal to caseNumber if exists
-        // call removeFromBoard with caseNumber
-
+        for (int i = 0; i < board.size(); i++) {
+            if (board.get(i).getCaseNumber() == caseNumber) {
+                returnCase = board.get(i);
+                // call removeFromBoard with caseNumber
+                remove(i);
+                break;
+            }
+        }
         // return case
-        return null;
+        return returnCase;
     }
 }
