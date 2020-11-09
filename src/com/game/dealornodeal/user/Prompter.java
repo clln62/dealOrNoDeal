@@ -23,7 +23,7 @@ public class Prompter {
     }
 
     public String dealOrNoDeal() {
-        System.out.print("Deal or No Deal?");
+        System.out.print("Deal or No Deal? - (Please respond with a Y for Deal and N for No Deal.)");
         String answer = input.next();
         return answer;
     }
