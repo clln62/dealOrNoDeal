@@ -4,29 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-class Banker{
-
+class Banker extends Board{
     private static double offerAmount;
-
-    public Banker()
-    {
-
-    }
-
-    public static double calculateDeal() {
-
+    public static double calculateDeal(List<Case> board) {
         List<Double> values = new ArrayList<>();
-        Board.board.forEach(x -> values.add(x.getCaseValue()));
-        //if (playersCase.getCaseValue() != 0.0)
-        //    values.add(playersCase.getCaseValue());
+        board.forEach(x -> values.add(x.getCaseValue()));
         double max = values.stream().max(Double::compare).orElseThrow(NoSuchElementException::new);
         return offerAmount = max * 0.75;
-
     }
-
-
-    public static double getOfferAmount() {
-        calculateDeal();
+    public static double getOfferAmount(Case playerCase) {
+        calculateDeal(Board.board);
         return offerAmount;
     }
 }

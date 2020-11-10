@@ -15,8 +15,6 @@ public class Game {
     Player player = new Player();
     Host host = new Host();
     Prompter prompter = new Prompter();
-
-
     public void gameStart() {
         // ask players name and save the value
         player.setName(prompter.askPlayerName());
@@ -24,7 +22,6 @@ public class Game {
         // After rules option, kick off the game with the first case choice
         choosePlayerCase();
     }
-
     public void choosePlayerCase() {
         // chosenCase will call the prompter to get the case number and save it
         int chosenCase = prompter.chooseCase();
@@ -41,7 +38,6 @@ public class Game {
             choosePlayerCase();
         }
     }
-
     public void playGame() {
         // may need to create a way to break out out of certain loops if player chooses to
         // accept bankOffer at any given point - maybe not. Tests will reveal this.
@@ -54,9 +50,8 @@ public class Game {
         // call finalRound()
         finalRound();
     }
-
     public void playRound(int numberOfEliminations) {
-            // create loop for the round with numberOfEliminations
+        // create loop for the round with numberOfEliminations
         for (int i = 0; i < numberOfEliminations; i++) {
             // call prompter.askCaseChoice(player.getName()) to prompt player to choose case between 1-26
             int chosenCase = prompter.askCaseChoice(player.getName());
@@ -79,7 +74,6 @@ public class Game {
         // DONE: revise player.acceptOrDeclineDeal to take in dealOrNoDealResponse and proceed accordingly
         player.acceptOrDeclineDeal(dealOrNoDealResponse);
     }
-
     public void finalRound(){
 //        DONE: Call method in Host to get final case
         Case finalCase = host.grabFinalCase();
@@ -95,14 +89,14 @@ public class Game {
 //        DONE: Call player.acceptOffer
         player.acceptOrDeclineDeal(prompter.dealOrNoDeal());
 //        If swap
-         if (prompter.askToSwap(finalCase, chosenCase) && player.isWantsToContinue()) {
-             //        host.revealCase(finalCase)
-             host.revealCase(finalCase);
-         }
+        if (prompter.askToSwap(finalCase, chosenCase) && player.isWantsToContinue()) {
+            //        host.revealCase(finalCase)
+            host.revealCase(finalCase);
+        }
 //        If declines offer
-         else if (player.isWantsToContinue()){
+        else if (player.isWantsToContinue()){
 //        host.revealCaes(playerCase)
-             host.revealCase(chosenCase);
-         }
+            host.revealCase(chosenCase);
+        }
     }
 }
