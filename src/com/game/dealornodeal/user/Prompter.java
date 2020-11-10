@@ -1,5 +1,7 @@
 package com.game.dealornodeal.user;
 
+import com.game.dealornodeal.Case;
+
 import java.util.*;
 
 /**
@@ -46,6 +48,35 @@ public class Prompter {
 //            dealOrNoDeal();
 //        }
         return null;
+    }
+
+    public void presentCases(Case finalCase, Case chosenCase) {
+        System.out.println("Throughout this game you have held onto case number " + chosenCase.getCaseNumber() +
+                ". There is one case left on the stage, case number " + finalCase.getCaseNumber());
+    }
+
+    public boolean askToSwap(Case finalCase, Case chosenCase) {
+        presentCases(finalCase, chosenCase);
+        System.out.print("Would you like to swap these two cases? If you do, case number " + finalCase.getCaseNumber() +
+                " will become your new chosen case, the one holding your winning amount. If you do not wish to swap, " +
+                "case number " + chosenCase.getCaseNumber() + " will remain where it has been throughout the game." +
+                "Will you swap case? (Y for yes or N for no.)");
+        String response = input.next();
+
+        // NOTE: Like in dealOrNoDeal this logic can be fixed, but was written this way for now in order to accomplish
+        // what is needed to function in MVP
+        if (response.toUpperCase().equals("Y")) {
+            return true;
+        }
+        else if (response.toUpperCase().equals("N")) {
+            return false;
+        }
+        else {
+            System.out.println(response + " is not a valid input. Please respond with a Y for Deal and N for No Deal");
+            dealOrNoDeal();
+        }
+
+        return false;
     }
 
     // PLAYER "METHODS"
