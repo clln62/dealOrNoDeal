@@ -6,9 +6,6 @@ class Player {
 
     private boolean wantsToContinue = true;
 
-
-
-
     public Player() {
 
     }
@@ -28,16 +25,13 @@ class Player {
 
     private void declineDeal() {
         System.out.println(getName() + " has declined the amount of: $" + Banker.getOfferAmount(getChosenCase()));
-
     }
-
 
     public void chooseCase(int chosenCase) {
         // find case in board that matches the case number submitted
         // call setter for chosenCase with the case from Board
         setChosenCase(Board.giveCase(chosenCase));
     }
-
 
     public Case getChosenCase() {
         return chosenCase;
@@ -46,8 +40,7 @@ class Player {
     public void setChosenCase(Case chosenCase) {
         this.chosenCase = chosenCase;
     }
-
-
+    
     public String getName() {
         return name;
     }
