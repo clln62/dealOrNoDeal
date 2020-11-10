@@ -1,6 +1,6 @@
 package com.game.dealornodeal.user;
 
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * This is a basic setup of how a scanner could work, this information will change as the application is built
@@ -25,11 +25,27 @@ public class Prompter {
     public String dealOrNoDeal() {
         System.out.print("Deal or No Deal? - (Please respond with a Y for Deal and N for No Deal.)");
         String answer = input.next();
-        if (!answer.toUpperCase().equals("Y") || !answer.toUpperCase().equals("N")) {
+
+        // NOTE: This isn't a great fix, but it works for now. As long as it is working, we can use it
+        // and come back later. Below, the coded out lines do not work together, but individually the
+        // conditional will work. Doing || does not work either. This can be refactored to a better solution
+        // later.
+        if (answer.toUpperCase().equals("N") || answer.toUpperCase().equals("Y")) {
+            return answer;
+        }
+        else {
             System.out.println(answer + " is not a valid input. Please respond with a Y for Deal and N for No Deal");
             dealOrNoDeal();
         }
-        return answer;
+//        if (!answer.toUpperCase().equals("N")) {
+//            System.out.println(answer + " is not a valid input. Please respond with a Y for Deal and N for No Deal");
+//            dealOrNoDeal();
+//        }
+//        if (!answer.toUpperCase().equals("Y")) {
+//            System.out.println(answer + " is not a valid input. Please respond with a Y for Deal and N for No Deal");
+//            dealOrNoDeal();
+//        }
+        return null;
     }
 
     // PLAYER "METHODS"
