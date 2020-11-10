@@ -48,7 +48,7 @@ class Board {
 
     public static Case giveCase(int caseNumber) {
         Case returnCase = null;
-        // TODO: Establish what happens if the case called does not exist - this goes all the way back to Game
+        // DONE: Establish what happens if the case called does not exist - this goes all the way back to Game
         // find the Case.caseNumber equal to caseNumber if exists
         for (int i = 0; i < board.size(); i++) {
             if (board.get(i).getCaseNumber() == caseNumber) {
