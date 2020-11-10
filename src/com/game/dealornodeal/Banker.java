@@ -14,7 +14,7 @@ class Banker extends Board{
         List<Double> values = new ArrayList<>();
         board.forEach(x -> values.add(x.getCaseValue()));
         double max = values.stream().max(Double::compare).orElseThrow(NoSuchElementException::new);
-        return max * 0.75;
+        return offerAmount = max * 0.75;
 
     }
 
