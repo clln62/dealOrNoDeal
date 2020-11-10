@@ -68,11 +68,14 @@ public class Game {
             // DONE: ensure that user returns to playRound at same i "count" if entry is invalid and they need to call another number
             // Case is presented to player in Host
         }
-        // call host.callBanker()
-        host.callBanker(player.getChosenCase());
-        String dealOrNoDealResponse = prompter.dealOrNoDeal();
-        // DONE: revise player.acceptOrDeclineDeal to take in dealOrNoDealResponse and proceed accordingly
-        player.acceptOrDeclineDeal(dealOrNoDealResponse);
+
+        if (board.board.size() > 1) {
+            // call host.callBanker()
+            host.callBanker(player.getChosenCase());
+            String dealOrNoDealResponse = prompter.dealOrNoDeal();
+            // DONE: revise player.acceptOrDeclineDeal to take in dealOrNoDealResponse and proceed accordingly
+            player.acceptOrDeclineDeal(dealOrNoDealResponse);
+        }
     }
     public void finalRound(){
 //        DONE: Call method in Host to get final case
