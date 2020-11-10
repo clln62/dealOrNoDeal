@@ -4,9 +4,7 @@ import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-
 import java.util.NoSuchElementException;
-
 import static org.junit.Assert.*;
 
 @FixMethodOrder (MethodSorters.NAME_ASCENDING)
@@ -32,7 +30,7 @@ public class BankerTest
     @Test(expected=NoSuchElementException.class)
     public void calculateDealWithEmptyBoard_shouldReturnNoSuchElementException()
     {
-        Board.board.removeAll(Board.board);
+        Board.board.clear();
         assertNotNull(board);
         Banker.calculateDeal(player.getChosenCase());
     }
