@@ -75,7 +75,7 @@ public class Game {
             // Case is presented to player in Host
         }
         // call host.callBanker()
-        host.callBanker();
+        host.callBanker(player.getChosenCase());
         String dealOrNoDealResponse = prompter.dealOrNoDeal();
         // DONE: revise player.acceptOrDeclineDeal to take in dealOrNoDealResponse and proceed accordingly
         player.acceptOrDeclineDeal(dealOrNoDealResponse);
@@ -90,7 +90,7 @@ public class Game {
         prompter.presentCases(finalCase, chosenCase);
 //        DONE: getFinalOffer
 //                DONE: PresentFinalOffer
-        host.callBanker();
+        host.callBanker(player.getChosenCase());
 //        DONE: Ask Player what they want to do
 //            DONE: If accepts offer
 //        DONE: Call player.acceptOffer

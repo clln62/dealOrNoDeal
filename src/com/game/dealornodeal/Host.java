@@ -45,10 +45,10 @@ class Host {
 //        grabCase(caseNumber);
 //    }
 
-    public void callBanker() {
+    public void callBanker(Case playerCase) {
         // call getOfferAmount() in Banker
         // call presentDeal(offer)
-        presentDeal(Banker.getOfferAmount());
+        presentDeal(Banker.getOfferAmount(playerCase));
     }
 
     public void presentDeal(double offerAmount) {

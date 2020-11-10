@@ -19,7 +19,7 @@ class Banker extends Board{
     }
 
 
-    public static double getOfferAmount() {
+    public static double getOfferAmount(Case playerCase) {
         calculateDeal(Board.board);
         return offerAmount;
     }
