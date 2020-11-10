@@ -34,10 +34,10 @@ class Board {
         }
     }
 
-    public static void remove(int caseNumber) {
+    public static void remove(int index) {
         // find the Case.caseNumber in board equal to caseNumber
         // remove chosen case from board
-        board.remove(caseNumber);
+        board.remove(index);
     }
 
     // this method is currently not being utilized - giveCase already does work of finding Case and calling remove with caseNumber
