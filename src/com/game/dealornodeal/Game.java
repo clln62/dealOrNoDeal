@@ -64,7 +64,7 @@ public class Game {
             // call host.grabCase(chosenCase)
             host.grabCase(chosenCase);
             // all checks for valid number and search for case is done in other classes - Host and Board
-            // TODO: insure that user returns to playRound at same i "count" if entry is invalid and they need to call another number
+            // TODO: ensure that user returns to playRound at same i "count" if entry is invalid and they need to call another number
             // TODO: revise revealCase in Host to use proper name and not host name - this may require name be passed in from here when calling grabCase() above
             // Case is presented to player in Host
         }
@@ -76,20 +76,32 @@ public class Game {
     }
 
     public void finalRound(){
-//        Getfinal case
-//                Present final case number
-//        Get playercase
-//        Present playerCaseNumber
-//        getFinalOffer
-//                PresentFinalOffer
-//        Ask Player what they want to do
-//            If accepts offer
-//        Call player.acceptOffer
+//        DONE: Call method in Host to get final case
+        Case finalCase = host.grabFinalCase();
+//        DONE: Get playercase
+        Case chosenCase = host.grabFinalCase();
+//        DONE: Show player their case and the games case
+        prompter.presentCases(finalCase, chosenCase);
+//        DONE: getFinalOffer
+//                DONE: PresentFinalOffer
+        host.callBanker();
+//        DONE: Ask Player what they want to do
+//            DONE: If accepts offer
+//        DONE: Call player.acceptOffer
+        prompter.dealOrNoDeal();
 //        If swap
-//		“You swapped!”
-//        host.revealCase(finalCase)
+         if (prompter.askToSwap(finalCase, chosenCase)) {
+             //        host.revealCase(finalCase)
+             host.revealCase(finalCase);
+         }
 //        If declines offer
+         else {
 //        host.revealCaes(playerCase)
+             host.revealCase(chosenCase);
+         }
+
+
+
     }
 
 

@@ -21,6 +21,11 @@ class Host {
 //        // call setName()
 //    }
 
+    // TODO: finish this method to return final case to game
+    public Case grabFinalCase () {
+        return null;
+    }
+
     public void grabCase(int caseNumber) {
         // calls Board.giveCase(caseNumber)
             // gets case back from Board
@@ -28,7 +33,7 @@ class Host {
         revealCase(Board.giveCase(caseNumber));
     }
 
-    private void revealCase(Case input) {
+    public void revealCase(Case input) {
         System.out.println("You chose case number " + input.getCaseNumber() + " with a value of " + input.getCaseValue());
 
     }
