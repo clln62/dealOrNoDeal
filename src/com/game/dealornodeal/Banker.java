@@ -1,19 +1,26 @@
 package com.game.dealornodeal;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 
-class Banker {
+class Banker extends Board{
+
     private static double offerAmount;
 
-    public void calculateDeal(List<Case> board) {
+    public static double calculateDeal(List<Case> board) {
 
-        // set value in offerAmount
+        List<Double> values = new ArrayList<>();
+        board.forEach(x -> values.add(x.getCaseValue()));
+        double max = values.stream().max(Double::compare).orElseThrow(NoSuchElementException::new);
+        return max * 0.75;
+
     }
 
 
     public static double getOfferAmount() {
-        // call calculateDeal(Board.board)
-
+        calculateDeal(Board.board);
         return offerAmount;
     }
 }
