@@ -27,7 +27,7 @@ class Board {
             // create a new Case
             Case briefcase = new Case();
             // add case number and case value to new Case
-            briefcase.setCaseNumber(i);
+            briefcase.setCaseNumber(i + 1);
             briefcase.setCaseValue(values.get(i));
             // add new case to board
             board.add(briefcase);
@@ -60,5 +60,9 @@ class Board {
         }
         // return case
         return returnCase;
+    }
+
+    public static Case giveFinalCase() {
+        return board.get(0);
     }
 }

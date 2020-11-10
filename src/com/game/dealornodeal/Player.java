@@ -4,7 +4,10 @@ class Player {
     private String name;
     // right now offerAcceptance isn't being used. If not being used when complete - remove
 //    private boolean offerAcceptance;
-    public Case chosenCase;
+    private Case chosenCase;
+
+    private boolean wantsToContinue = true;
+
 
 
 
@@ -21,12 +24,12 @@ class Player {
     }
 
     private void acceptDeal() {
-        System.out.println(getName() + " has accepted the amount of: " + Banker.getOfferAmount());
-        // TODO: end game
+        System.out.println(getName() + " has accepted the deal and will be going home with: $" + Banker.getOfferAmount());
+        wantsToContinue = false;
     }
 
     private void declineDeal() {
-        System.out.println(getName() + " has declined the amount of: " + Banker.getOfferAmount());
+        System.out.println(getName() + " has declined the amount of: $" + Banker.getOfferAmount());
 
     }
 
@@ -62,7 +65,11 @@ class Player {
         this.name = name;
     }
 
-//    public boolean isOfferAcceptance() {
+    public boolean isWantsToContinue() {
+        return wantsToContinue;
+    }
+
+    //    public boolean isOfferAcceptance() {
 //        return offerAcceptance;
 //    }
 //

@@ -48,7 +48,8 @@ public class Game {
         // accept bankOffer at any given point - maybe not. Tests will reveal this.
         while (board.board.size() > 1) {
             for (int i = 0; i < eliminationRounds.length; i++) {
-                playRound(eliminationRounds[i]);
+                if (player.isWantsToContinue()) playRound(eliminationRounds[i]);
+                else return;
             }
         }
         // call finalRound()
@@ -65,7 +66,6 @@ public class Game {
             host.grabCase(chosenCase);
             // all checks for valid number and search for case is done in other classes - Host and Board
             // TODO: ensure that user returns to playRound at same i "count" if entry is invalid and they need to call another number
-            // TODO: revise revealCase in Host to use proper name and not host name - this may require name be passed in from here when calling grabCase() above
             // Case is presented to player in Host
         }
         // call host.callBanker()
@@ -79,7 +79,7 @@ public class Game {
 //        DONE: Call method in Host to get final case
         Case finalCase = host.grabFinalCase();
 //        DONE: Get playercase
-        Case chosenCase = host.grabFinalCase();
+        Case chosenCase = player.getChosenCase();
 //        DONE: Show player their case and the games case
         prompter.presentCases(finalCase, chosenCase);
 //        DONE: getFinalOffer
@@ -88,14 +88,14 @@ public class Game {
 //        DONE: Ask Player what they want to do
 //            DONE: If accepts offer
 //        DONE: Call player.acceptOffer
-        prompter.dealOrNoDeal();
+        player.acceptOrDeclineDeal(prompter.dealOrNoDeal());
 //        If swap
-         if (prompter.askToSwap(finalCase, chosenCase)) {
+         if (prompter.askToSwap(finalCase, chosenCase) && player.isWantsToContinue()) {
              //        host.revealCase(finalCase)
              host.revealCase(finalCase);
          }
 //        If declines offer
-         else {
+         else if (player.isWantsToContinue()){
 //        host.revealCaes(playerCase)
              host.revealCase(chosenCase);
          }

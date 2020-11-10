@@ -21,9 +21,9 @@ class Host {
 //        // call setName()
 //    }
 
-    // TODO: finish this method to return final case to game
+    // DONE: finish this method to return final case to game
     public Case grabFinalCase () {
-        return null;
+        return Board.giveFinalCase();
     }
 
     public void grabCase(int caseNumber) {
@@ -34,7 +34,7 @@ class Host {
     }
 
     public void revealCase(Case input) {
-        System.out.println("You chose case number " + input.getCaseNumber() + " with a value of " + input.getCaseValue());
+        System.out.println("You chose case number " + input.getCaseNumber() + " with a value of $" + input.getCaseValue());
 
     }
 
@@ -52,7 +52,7 @@ class Host {
     }
 
     public void presentDeal(double offerAmount) {
-        System.out.println("The banker has come back wih an offer of " + offerAmount + ". Will you accept or decline?");
+        System.out.println("The banker has come back wih an offer of $" + offerAmount + ". Will you accept or decline?");
         // prompt is automatically presented from Game and Prompter
     }
 
