@@ -11,7 +11,6 @@ import com.game.dealornodeal.user.Prompter;
 public class Game {
     Board board = new Board();
     int[] eliminationRounds = {10, 5, 5, 3, 1};
-    int pointer = 0;
 
     Player player = new Player();
     Host host = new Host();
