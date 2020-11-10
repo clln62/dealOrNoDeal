@@ -44,7 +44,7 @@ public class BankerTest
     @Test
     public void getOfferAmountWithPartialBoard_shouldReturnOfferFromCalculateDeal()
     {
-        Board.board.removeAll(Board.board);
+        Board.board.clear();
         Case case1 = new Case();
         case1.setCaseNumber(1);
         case1.setCaseValue(500000.0);
