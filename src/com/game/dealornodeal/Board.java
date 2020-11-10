@@ -65,4 +65,16 @@ class Board {
     public static Case giveFinalCase() {
         return board.get(0);
     }
+
+    public boolean caseAvailable(int chosenCase) {
+        boolean caseIsAvailable = false;
+
+        for (int i = 0; i < board.size(); i++) {
+            if (board.get(i).getCaseNumber() == chosenCase) {
+                caseIsAvailable = true;
+            }
+        }
+
+        return caseIsAvailable;
+    }
 }

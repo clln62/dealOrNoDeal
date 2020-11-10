@@ -63,9 +63,15 @@ public class Game {
             int chosenCase = prompter.askCaseChoice(player.getName());
             // DONE: revise host.grabCase() to take in chosenCase from prompter
             // call host.grabCase(chosenCase)
+            while (!board.caseAvailable(chosenCase)) {
+                // NOTE: This can be revised later to show the available cases, but will just prevent player from
+                // continuing until a valid available case is entered
+                System.out.println("Case number " + chosenCase + " has already been eliminated. Please enter valid number.");
+                chosenCase = prompter.askCaseChoice(player.getName());
+            }
             host.grabCase(chosenCase);
             // all checks for valid number and search for case is done in other classes - Host and Board
-            // TODO: ensure that user returns to playRound at same i "count" if entry is invalid and they need to call another number
+            // DONE: ensure that user returns to playRound at same i "count" if entry is invalid and they need to call another number
             // Case is presented to player in Host
         }
         // call host.callBanker()
@@ -99,10 +105,5 @@ public class Game {
 //        host.revealCaes(playerCase)
              host.revealCase(chosenCase);
          }
-
-
-
     }
-
-
 }
