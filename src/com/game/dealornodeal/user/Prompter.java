@@ -17,6 +17,11 @@ public class Prompter {
     public int askCaseChoice(String playerName) {
         System.out.print(playerName + ": what case would you like to eliminate?");
         int caseNumber = input.nextInt();
+
+        if (caseNumber < 1 || caseNumber > 26) {
+            System.out.println("Invalid input: " + caseNumber + ". Please enter number between 1-26.");
+            askCaseChoice(playerName);
+        }
         return caseNumber;
     }
     public String dealOrNoDeal() {
@@ -49,9 +54,9 @@ public class Prompter {
     }
     public boolean askToSwap(Case finalCase, Case chosenCase) {
         presentCases(finalCase, chosenCase);
-        System.out.print("Would you like to swap these two cases? If you do, case number " + finalCase.getCaseNumber() +
-                " will become your new chosen case, the one holding your winning amount. If you do not wish to swap, " +
-                "case number " + chosenCase.getCaseNumber() + " will remain where it has been throughout the game." +
+        System.out.print("Would you like to swap these two cases?" + "\n" + "If you do, case number " + finalCase.getCaseNumber() +
+                " will become your new chosen case, the one holding your winning amount." + "\n" + "If you do not wish to swap, " +
+                "case number " + chosenCase.getCaseNumber() + " will remain where it has been throughout the game." + "\n" +
                 "Will you swap case? (Y for yes or N for no.)");
         String response = input.next();
         // NOTE: Like in dealOrNoDeal this logic can be fixed, but was written this way for now in order to accomplish
