@@ -41,7 +41,7 @@ public class Game {
     public void playGame() {
         // may need to create a way to break out out of certain loops if player chooses to
         // accept bankOffer at any given point - maybe not. Tests will reveal this.
-        while (board.board.size() > 1) {
+        while (Board.board.size() > 1) {
             for (int i = 0; i < eliminationRounds.length; i++) {
                 if (player.isWantsToContinue()) playRound(eliminationRounds[i]);
                 else return;

@@ -10,8 +10,8 @@ public class Prompter {
 
     // HOST "METHODS"
     public String askPlayerName() {
-        System.out.print("What is your name?");
-        String name = input.nextLine();
+            System.out.print("What is your name?");
+            String name = input.nextLine();
         return name;
     }
     public int askCaseChoice(String playerName) {
