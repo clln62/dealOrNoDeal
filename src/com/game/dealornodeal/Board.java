@@ -27,7 +27,7 @@ class Board {
             // create a new Case
             Case briefcase = new Case();
             // add case number and case value to new Case
-            briefcase.setCaseNumber(i + 1);
+            briefcase.setCaseNumber(i+1);
             briefcase.setCaseValue(values.get(i));
             // add new case to board
             board.add(briefcase);
@@ -48,7 +48,7 @@ class Board {
 
     public static Case giveCase(int caseNumber) {
         Case returnCase = null;
-        // DONE: Establish what happens if the case called does not exist - this goes all the way back to Game
+        // TODO: Establish what happens if the case called does not exist - this goes all the way back to Game
         // find the Case.caseNumber equal to caseNumber if exists
         for (int i = 0; i < board.size(); i++) {
             if (board.get(i).getCaseNumber() == caseNumber) {
@@ -60,21 +60,5 @@ class Board {
         }
         // return case
         return returnCase;
-    }
-
-    public static Case giveFinalCase() {
-        return board.get(0);
-    }
-
-    public boolean caseAvailable(int chosenCase) {
-        boolean caseIsAvailable = false;
-
-        for (int i = 0; i < board.size(); i++) {
-            if (board.get(i).getCaseNumber() == chosenCase) {
-                caseIsAvailable = true;
-            }
-        }
-
-        return caseIsAvailable;
     }
 }
