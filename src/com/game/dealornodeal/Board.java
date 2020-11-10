@@ -5,7 +5,6 @@ import java.util.*;
 // TODO: decide if we want to keep board list static or not
 
 class Board {
-    //    public static Map<Integer, Double> board = new HashMap<>();
     public static List<Case> board = new ArrayList<>();
 
     List<Double> values = new ArrayList<>(Arrays.asList(.01, 1.0, 5.0, 10.0, 25.0, 50.0, 75.0, 100.0, 200.0, 300.0, 400.0,

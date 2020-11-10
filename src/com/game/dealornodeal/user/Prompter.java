@@ -11,6 +11,7 @@ import java.util.*;
 public class Prompter {
     Scanner input = new Scanner(System.in);
 
+
     // HOST "METHODS"
     public String askPlayerName() {
         System.out.print("What is your name?");

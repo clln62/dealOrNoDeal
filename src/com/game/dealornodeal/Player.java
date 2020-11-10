@@ -2,8 +2,6 @@ package com.game.dealornodeal;
 
 class Player {
     private String name;
-    // right now offerAcceptance isn't being used. If not being used when complete - remove
-//    private boolean offerAcceptance;
     private Case chosenCase;
 
     private boolean wantsToContinue = true;
@@ -39,13 +37,6 @@ class Player {
         // call setter for chosenCase with the case from Board
         setChosenCase(Board.giveCase(chosenCase));
     }
-
-    // No longer needed - this is all done within the prompter and Game
-//    public int eliminateCase() {
-//        // ask player what case they want
-//
-//        return 0;
-//    }
 
 
     public Case getChosenCase() {

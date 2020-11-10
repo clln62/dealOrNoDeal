@@ -14,12 +14,6 @@ class Host {
         this.name = name;
     }
 
-//    This is handled in the Prompter class now
-//    public void askPlayerName() {
-//        System.out.println("What is your name?");
-//        // prompt player to enter name
-//        // call setName()
-//    }
 
     // DONE: finish this method to return final case to game
     public Case grabFinalCase () {
