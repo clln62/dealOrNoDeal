@@ -122,12 +122,12 @@ public class GameView extends JFrame{
 
     }
 
-    public void playerTextView(String message) {
+    public static void playerTextView(String message) {
         mainTextArea.setText(message);
         townGate();
     }
 
-    public void townGate() {
+    public static void townGate() {
         mainTextArea.setText("You are at the gate of the town");
     }
 
