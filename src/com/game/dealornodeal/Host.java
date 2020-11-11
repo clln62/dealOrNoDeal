@@ -16,13 +16,13 @@ class Host {
 
 
     // DONE: finish this method to return final case to game
-    public Case grabFinalCase () {
+    public Case grabFinalCase() {
         return Board.giveFinalCase();
     }
 
     public void grabCase(int caseNumber) {
         // calls Board.giveCase(caseNumber)
-            // gets case back from Board
+        // gets case back from Board
         // call revealCase(Case)
         revealCase(Board.giveCase(caseNumber));
     }

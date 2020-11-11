@@ -10,9 +10,11 @@ class Board {
     List<Double> values = new ArrayList<>(Arrays.asList(.01, 1.0, 5.0, 10.0, 25.0, 50.0, 75.0, 100.0, 200.0, 300.0, 400.0,
             500.0, 750.0, 1000.0, 5000.0, 10000.0, 25000.0, 50000.0, 75000.0, 100000.0, 200000.0, 300000.0, 400000.0, 500000.0,
             750000.0, 1000000.0));
+
     public Board() {
         populateBoard();
     }
+
     private void populateBoard() {
         // set all to Field board
         // shuffle values with Collections.shuffle()
@@ -29,11 +31,13 @@ class Board {
             board.add(briefcase);
         }
     }
+
     public static void remove(int index) {
         // find the Case.caseNumber in board equal to caseNumber
         // remove chosen case from board
         board.remove(index);
     }
+
     // this method is currently not being utilized - giveCase already does work of finding Case and calling remove with caseNumber
 //    public static void remove(Case input) {
 //        // find the Case.caseNumber in board equal to caseNumber
@@ -54,9 +58,11 @@ class Board {
         // return case
         return returnCase;
     }
+
     public static Case giveFinalCase() {
         return board.get(0);
     }
+
     public boolean caseAvailable(int chosenCase) {
         boolean caseIsAvailable = false;
         for (int i = 0; i < board.size(); i++) {

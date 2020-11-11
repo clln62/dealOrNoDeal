@@ -2,8 +2,9 @@ package com.game.dealornodeal;
 
 import java.util.*;
 
-class Banker{
+class Banker {
     private static double offerAmount;
+
     // TODO
     public static double calculateDeal(Case playersCase) {
         List<Double> values = new ArrayList<>();
@@ -15,6 +16,7 @@ class Banker{
         offerAmount = Math.round(((max + x) / 2) * 0.75);
         return offerAmount;
     }
+
     public static double getOfferAmount(Case playerCase) {
         calculateDeal(playerCase);
         return offerAmount;

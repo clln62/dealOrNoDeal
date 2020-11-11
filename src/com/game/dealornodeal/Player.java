@@ -14,7 +14,7 @@ class Player {
         // set response to capital in case user enters lower case character
         // if deal call acceptDeal()
         if (response.toUpperCase().equals("Y")) acceptDeal();
-        // if no deal call declineDeal()
+            // if no deal call declineDeal()
         else if (response.toUpperCase().equals("N")) declineDeal();
     }
 
@@ -40,7 +40,7 @@ class Player {
     public void setChosenCase(Case chosenCase) {
         this.chosenCase = chosenCase;
     }
-    
+
     public String getName() {
         return name;
     }

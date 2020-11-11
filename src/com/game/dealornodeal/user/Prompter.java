@@ -1,8 +1,10 @@
 package com.game.dealornodeal.user;
+
 import com.game.dealornodeal.Case;
 
 import java.sql.SQLOutput;
 import java.util.*;
+
 /**
  * This is a basic setup of how a scanner could work, this information will change as the application is built
  */
@@ -12,8 +14,8 @@ public class Prompter {
 
     // HOST "METHODS"
     public String askPlayerName() {
-            System.out.print("What is your name?");
-            String name = input.nextLine();
+        System.out.print("What is your name?");
+        String name = input.nextLine();
         return name;
     }
 
@@ -38,8 +40,7 @@ public class Prompter {
         // later.
         if (answer.toUpperCase().equals("N") || answer.toUpperCase().equals("Y")) {
             return answer;
-        }
-        else {
+        } else {
             System.out.println("\n" + answer + " is not a valid input. Please respond with a Y for Deal and N for No Deal." + "\n");
             dealOrNoDeal();
         }
@@ -70,11 +71,9 @@ public class Prompter {
         // what is needed to function in MVP
         if (response.toUpperCase().equals("Y")) {
             return true;
-        }
-        else if (response.toUpperCase().equals("N")) {
+        } else if (response.toUpperCase().equals("N")) {
             return false;
-        }
-        else {
+        } else {
             System.out.println("\n" + response + " is not a valid input. Please respond with a Y for Deal and N for No Deal.");
             dealOrNoDeal();
         }
