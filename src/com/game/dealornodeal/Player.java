@@ -19,12 +19,12 @@ class Player {
     }
 
     private void acceptDeal() {
-        System.out.println(getName() + " has accepted the deal and will be going home with: $" + Banker.getOfferAmount(getChosenCase()));
+        System.out.println(getName() + " has accepted the deal and will be going home with: $" + Banker.getOfferAmount(getChosenCase()) + "\n");
         wantsToContinue = false;
     }
 
     private void declineDeal() {
-        System.out.println(getName() + " has declined the amount of: $" + Banker.getOfferAmount(getChosenCase()));
+        System.out.println(getName() + " has declined the amount of: $" + Banker.getOfferAmount(getChosenCase()) + "\n");
     }
 
     public void chooseCase(int chosenCase) {

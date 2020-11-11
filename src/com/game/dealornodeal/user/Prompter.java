@@ -20,13 +20,10 @@ public class Prompter {
     public int askCaseChoice(String playerName) {
         System.out.print(playerName + ": what case would you like to eliminate?");
 
-        System.out.println("*******************" + input.hasNext());
-            System.out.println("Invalid input. Please select a case number between 1-26.");
-
         int caseNumber = input.nextInt();
 
         if (caseNumber < 1 || caseNumber > 26) {
-            System.out.println("Invalid input: " + caseNumber + ". Please enter number between 1-26.");
+            System.out.println("\n" + "Invalid input: " + caseNumber + ". Please enter number between 1-26.");
             askCaseChoice(playerName);
         }
         return caseNumber;
@@ -43,7 +40,7 @@ public class Prompter {
             return answer;
         }
         else {
-            System.out.println(answer + " is not a valid input. Please respond with a Y for Deal and N for No Deal");
+            System.out.println("\n" + answer + " is not a valid input. Please respond with a Y for Deal and N for No Deal." + "\n");
             dealOrNoDeal();
         }
 //        if (!answer.toUpperCase().equals("N")) {
@@ -78,7 +75,7 @@ public class Prompter {
             return false;
         }
         else {
-            System.out.println(response + " is not a valid input. Please respond with a Y for Deal and N for No Deal");
+            System.out.println("\n" + response + " is not a valid input. Please respond with a Y for Deal and N for No Deal.");
             dealOrNoDeal();
         }
         return false;
@@ -86,7 +83,7 @@ public class Prompter {
 
     // PLAYER "METHODS"
     public int chooseCase() {
-        System.out.print("Which case would you like to hold onto until our final round?");
+        System.out.print("\n" + "Which case would you like to hold onto until our final round?");
         int chosenCase = input.nextInt();
         return chosenCase;
     }

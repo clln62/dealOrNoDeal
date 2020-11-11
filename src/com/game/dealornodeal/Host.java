@@ -28,7 +28,7 @@ class Host {
     }
 
     public void revealCase(Case input) {
-        System.out.println("You chose case number " + input.getCaseNumber() + " with a value of $" + input.getCaseValue());
+        System.out.println("\n" + "You chose case number " + input.getCaseNumber() + " with a value of $" + input.getCaseValue());
 
     }
 
@@ -46,7 +46,7 @@ class Host {
     }
 
     public void presentDeal(double offerAmount) {
-        System.out.println("The banker has come back wih an offer of $" + offerAmount + ". Will you accept or decline?");
+        System.out.println("The banker has come back with an offer of $" + offerAmount + ". Will you accept or decline?");
         // prompt is automatically presented from Game and Prompter
     }
 

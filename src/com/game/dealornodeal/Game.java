@@ -27,14 +27,14 @@ public class Game {
         int chosenCase = prompter.chooseCase();
         // check if chosenCase is in the 1-26 range
         if (chosenCase >= 1 && chosenCase <= 26) {
-            System.out.println(player.getName() + " has chosen " + chosenCase + " to hold onto through each round.");
+            System.out.println("\n" + player.getName() + " has chosen " + chosenCase + " to hold onto through each round.");
             // DONE: revise player.chooseCase() to take in int chosenCase and find the case needed to save to player
             player.chooseCase(chosenCase);
             playGame();
         }
         // give invalid message and continue to call method until valid entry has been met
         else {
-            System.out.println(chosenCase + " is an invalid entry. Choice must be between 1-26.");
+            System.out.println("\n" + chosenCase + " is an invalid entry. Choice must be between 1-26.");
             choosePlayerCase();
         }
     }
@@ -60,7 +60,7 @@ public class Game {
             while (!board.caseAvailable(chosenCase)) {
                 // NOTE: This can be revised later to show the available cases, but will just prevent player from
                 // continuing until a valid available case is entered
-                System.out.println("Case number " + chosenCase + " has already been eliminated. Please enter valid number.");
+                System.out.println("\n" + "Case number " + chosenCase + " has already been eliminated. Please enter valid number.");
                 chosenCase = prompter.askCaseChoice(player.getName());
             }
             host.grabCase(chosenCase);
