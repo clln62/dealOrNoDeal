@@ -1,4 +1,4 @@
-package com.game.dealornodeal.view;
+package com.game.dealornodeal.view.client;
 
 import com.game.dealornodeal.Game;
 
@@ -6,9 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileOutputStream;
 
-public class GameView extends JFrame{
+public class GameViewClient extends JFrame{
     JFrame frame;
     Container con;
     JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, casePanel;
@@ -25,12 +24,12 @@ public class GameView extends JFrame{
         Game game = new Game();
 
 
-        new GameView();
+        new GameViewClient();
         game.gameStart();
 
     }
 
-    GameView() {
+    GameViewClient() {
         super("Deal or No Deal");
 
 
@@ -66,10 +65,32 @@ public class GameView extends JFrame{
         con.add(startButtonPanel);
     }
 
-    public void createGamePlayScreen() {
-
+    public void startGameScreen() {
         titleNamePanel.setVisible(false);
         startButtonPanel.setVisible(false);
+
+        mainTextPanel = new JPanel();
+        mainTextPanel.setBounds(100, 300, 600, 250);
+        mainTextPanel.setBackground(Color.BLACK);
+        con.add(mainTextPanel);
+
+        mainTextArea = new JTextArea();
+        mainTextArea.setBounds(100, 300, 600, 250);
+        mainTextArea.setBackground(Color.BLACK);
+        mainTextArea.setForeground(Color.WHITE);
+        mainTextArea.setFont(normalFont);
+        mainTextArea.setLineWrap(true);
+        mainTextPanel.add(mainTextArea);
+
+        enterPlayerName();
+
+    }
+
+    public void enterPlayerName() {
+        mainTextArea.setText("What is your name?");
+    }
+
+    public void createGamePlayScreen() {
 
         mainTextPanel = new JPanel();
         mainTextPanel.setBounds(100, 300, 600, 250);
@@ -118,23 +139,14 @@ public class GameView extends JFrame{
             casePanel.add(caseLabel);
         }
 
-        playerTextView("This is a string");
 
     }
 
-    public static void playerTextView(String message) {
-        mainTextArea.setText(message);
-        townGate();
-    }
-
-    public static void townGate() {
-        mainTextArea.setText("You are at the gate of the town");
-    }
 
     public class TitleScreenHandler implements ActionListener{
 
         public void actionPerformed(ActionEvent event) {
-            createGamePlayScreen();
+            startGameScreen();
         }
     }
 }
