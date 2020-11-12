@@ -4,7 +4,7 @@ import java.util.*;
 
 // TODO: decide if we want to keep board list static or not
 
-class Board {
+public class Board {
     public static List<Case> board = new ArrayList<>();
 
     List<Double> values = new ArrayList<>(Arrays.asList(.01, 1.0, 5.0, 10.0, 25.0, 50.0, 75.0, 100.0, 200.0, 300.0, 400.0,
@@ -63,7 +63,7 @@ class Board {
         return board.get(0);
     }
 
-    public boolean caseAvailable(int chosenCase) {
+    public static boolean caseAvailable(int chosenCase) {
         boolean caseIsAvailable = false;
         for (int i = 0; i < board.size(); i++) {
             if (board.get(i).getCaseNumber() == chosenCase) {
@@ -71,5 +71,9 @@ class Board {
             }
         }
         return caseIsAvailable;
+    }
+
+    public static List<Case> getBoard() {
+        return board;
     }
 }

@@ -1,5 +1,6 @@
 package com.game.dealornodeal.user;
 
+import com.game.dealornodeal.Board;
 import com.game.dealornodeal.Case;
 
 import java.util.*;
@@ -23,10 +24,14 @@ public class Prompter {
 
         int caseNumber = input.nextInt();
 
-        if (caseNumber < 1 || caseNumber > 26) {
-            System.out.println("\n" + "Invalid input: " + caseNumber + ". Please enter number between 1-26.");
+//        if (caseNumber < 1 || caseNumber > 26) {
+//            System.out.println("\n" + "Invalid input: " + caseNumber + ". Please enter number between 1-26.");
+//            askCaseChoice(playerName, cases);
+//        }
+        if (!availableCases(caseNumber)) {
             askCaseChoice(playerName);
         }
+
         return caseNumber;
     }
 
@@ -83,6 +88,24 @@ public class Prompter {
     public int chooseCase() {
         System.out.print("\n" + "Which case would you like to hold onto until our final round?");
         int chosenCase = input.nextInt();
+
+        if (!availableCases(chosenCase)) {
+            chooseCase();
+        }
+
         return chosenCase;
+    }
+
+    // GENERAL USE "METHODS"
+    private boolean availableCases(int caseNumber) {
+        boolean isAvailable = true;
+        if(!Board.caseAvailable(caseNumber)) {
+            isAvailable = false;
+            System.out.println("\n" + "Invalid input: " + caseNumber + ". Please enter a case number still available.");
+            for(Case briefcase : Board.getBoard()) {
+                System.out.println(briefcase.getCaseNumber() + " is still available.");
+            }
+        }
+        return isAvailable;
     }
 }
