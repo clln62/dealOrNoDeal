@@ -1,5 +1,6 @@
 package com.game.dealornodeal.user;
 
+import com.game.dealornodeal.Case;
 import com.game.dealornodeal.Game;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,34 +32,43 @@ public class PrompterTest
     }
 
     @Test
-    public void askCaseChoice() throws Exception
+    public void askCaseChoice_shouldReturnCaseChoice() throws Exception
     {
-        prompter = new Prompter(new Scanner(new File("responses/askcasechoice.txt")));
+        prompter = new Prompter(new Scanner(new File("responses/casechoice.txt")));
         int choice = prompter.askCaseChoice("Chris");
-
+        assertEquals(3,choice);
     }
 
     @Test
-    public void dealOrNoDeal()
+    public void dealOrNoDeal_shouldReturnUserInput() throws FileNotFoundException
     {
-
+        prompter = new Prompter(new Scanner(new File("responses/dealornodealanswers.txt")));
+        assertEquals("Y",prompter.dealOrNoDeal());
+        assertEquals("N",prompter.dealOrNoDeal());
     }
 
     @Test
-    public void presentCases()
+    public void askToSwap_yesShouldReturnTrue() throws FileNotFoundException
     {
-
+        prompter = new Prompter(new Scanner(new File("responses/dealornodealanswers.txt")));
+        Case x = new Case();
+        Case y = new Case();
+        assertTrue(prompter.askToSwap(x,y));
+    }
+    @Test
+    public void askToSwap_noShouldReturnFalse() throws FileNotFoundException
+    {
+        prompter = new Prompter(new Scanner(new File("responses/dealornodealanswers.txt")));
+        Case x = new Case();
+        Case y = new Case();
+        assertTrue(prompter.askToSwap(x,y));
+        assertFalse(prompter.askToSwap(x,y));
     }
 
     @Test
-    public void askToSwap()
+    public void chooseCase() throws Exception
     {
-
-    }
-
-    @Test
-    public void chooseCase()
-    {
-
+        prompter = new Prompter(new Scanner(new File("responses/casechoice.txt")));
+        assertEquals(3,prompter.chooseCase());
     }
 }
