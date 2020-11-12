@@ -44,7 +44,8 @@ public class Game
         }
         // give invalid message and continue to call method until valid entry has been met
         else {
-            System.out.println("\n" + chosenCase + " is an invalid entry. Choice must be between 1-26.");
+            System.out.println("\n" + chosenCase + " is an invalid entry.");
+            board.caseAvailableList();
             choosePlayerCase();
         }
     }
@@ -68,11 +69,7 @@ public class Game
         // create loop for the round with numberOfEliminations
         for (int i = 0; i < numberOfEliminations; i++) {
             // call prompter.askCaseChoice(player.getName()) to prompt player to choose case between 1-26
-            List<Integer> available = new ArrayList<>();
-            for(Case briefcase : Board.getBoard()) {
-                available.add(briefcase.getCaseNumber());
-            }
-            System.out.println("Available cases to eliminate are: " + available);
+            List available = board.caseAvailableList();
             int chosenCase = prompter.askCaseChoice(player.getName());
             // DONE: revise host.grabCase() to take in chosenCase from prompter
             // call host.grabCase(chosenCase)

@@ -1,6 +1,6 @@
 package com.game.dealornodeal.user;
 
-import com.game.dealornodeal.Board;
+//import com.game.dealornodeal.Board;
 import com.game.dealornodeal.Case;
 
 import java.util.*;
@@ -23,7 +23,7 @@ public class Prompter
 
     public int askCaseChoice(String playerName)
     {
-        System.out.print(playerName + ": what case would you like to eliminate?");
+        System.out.print(playerName + ": which case would you like to eliminate?");
 
         int caseNumber = input.nextInt();
 
@@ -92,28 +92,28 @@ public class Prompter
         System.out.print("Which case would you like to hold onto until our final round?");
         int chosenCase = input.nextInt();
 
-        if (!availableCases(chosenCase)) {
-            chooseCase();
-        }
+//        if (!availableCases(chosenCase)) {
+//            chooseCase();
+//        }
 
         return chosenCase;
     }
 
     // GENERAL USE "METHODS"
-    private boolean availableCases(int caseNumber) {
-        boolean isAvailable = true;
-        if(!Board.caseAvailable(caseNumber)) {
-            isAvailable = false;
-            System.out.println("\n" + "Invalid input: " + caseNumber + ". Please enter a case number available.");
-
-            List<Integer> available = new ArrayList<>();
-            for(Case briefcase : Board.getBoard()) {
-                available.add(briefcase.getCaseNumber());
-            }
-            System.out.println("Available cases to choose from are: " + available);
-        }
-        return isAvailable;
-    }
+//    private boolean availableCases(int caseNumber) {
+//        boolean isAvailable = true;
+//        if(!Board.caseAvailable(caseNumber)) {
+//            isAvailable = false;
+//            System.out.println("\n" + "Invalid input: " + caseNumber + ". Please enter a case number available.");
+//
+//            List<Integer> available = new ArrayList<>();
+//            for(Case briefcase : Board.getBoard()) {
+//                available.add(briefcase.getCaseNumber());
+//            }
+//            System.out.println("Available cases to choose from are: " + available);
+//        }
+//        return isAvailable;
+//    }
 
     public void seeGameRules(String playerName) {
         System.out.print("\n" + "Welcome to Deal or No Deal, " + playerName + ". Would you like to know the game rules?" + "\n" +
