@@ -43,7 +43,7 @@ public class Board {
 //        // find the Case.caseNumber in board equal to caseNumber
 //        // remove chosen case from board
 //    }
-    public static Case giveCase(int caseNumber) {
+    static Case giveCase(int caseNumber) {
         Case returnCase = null;
         // DONE: Establish what happens if the case called does not exist - this goes all the way back to Game
         // find the Case.caseNumber equal to caseNumber if exists
