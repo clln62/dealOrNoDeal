@@ -10,8 +10,8 @@ public class GameViewPlay {
     GameViewHost host = new GameViewHost();
     Prompter prompter = new Prompter();
 
-    public void gameStart() {
-        player.setName(prompter.askPlayerName());
+    public void gameStart(String playerName) {
+        player.setName(playerName);
         choosePlayerCase();
     }
 
