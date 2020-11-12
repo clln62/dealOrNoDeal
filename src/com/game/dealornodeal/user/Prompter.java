@@ -1,8 +1,6 @@
 package com.game.dealornodeal.user;
 
 import com.game.dealornodeal.Case;
-
-import java.lang.reflect.AnnotatedArrayType;
 import java.util.*;
 
 public class Prompter {
@@ -35,14 +33,6 @@ public class Prompter {
     }
 
     public String dealOrNoDeal() {
-//        String answer = "";
-//        do {
-//            System.out.print("Deal or No Deal? - (Please respond with a Y for Deal and N for No Deal.)");
-//            while (!input.hasNext()) {
-//
-//            }
-//
-//        } while (!answer.equals("Y") || !answer.equals("N"));
 
         System.out.print("Deal or No Deal? - (Please respond with a Y for Deal and N for No Deal.)");
 
