@@ -55,7 +55,7 @@ class Board {
         return caseIsAvailable;
     }
 
-    public List caseAvailableList() {
+    public List<Integer> caseAvailableList() {
         List<Integer> available = new ArrayList<>();
         for(Case briefcase : getBoard()) {
             available.add(briefcase.getCaseNumber());
