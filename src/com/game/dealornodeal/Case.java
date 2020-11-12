@@ -1,29 +1,35 @@
 package com.game.dealornodeal;
 
 
-public class Case {
+public class Case
+{
     private int caseNumber;
     private double caseValue;
 
 
-    private void open() {
+    private void open()
+    {
 
     }
 
 
-    public int getCaseNumber() {
+    public int getCaseNumber()
+    {
         return caseNumber;
     }
 
-    public void setCaseNumber(int caseNumber) {
+    public void setCaseNumber(int caseNumber)
+    {
         this.caseNumber = caseNumber;
     }
 
-    public double getCaseValue() {
+    public double getCaseValue()
+    {
         return caseValue;
     }
 
-    public void setCaseValue(double caseValue) {
+    public void setCaseValue(double caseValue)
+    {
         this.caseValue = caseValue;
     }
 }

@@ -5,33 +5,43 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class PrompterTest {
+public class PrompterTest
+{
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() throws Exception
+    {
+
     }
 
     @Test
-    public void askPlayerName() {
+    public void askPlayerName()
+    {
+
     }
 
     @Test
-    public void askCaseChoice() {
+    public void askCaseChoice()
+    {
     }
 
     @Test
-    public void dealOrNoDeal() {
+    public void dealOrNoDeal()
+    {
     }
 
     @Test
-    public void presentCases() {
+    public void presentCases()
+    {
     }
 
     @Test
-    public void askToSwap() {
+    public void askToSwap()
+    {
     }
 
     @Test
-    public void chooseCase() {
+    public void chooseCase()
+    {
     }
 }

@@ -11,7 +11,8 @@ import java.util.List;
 // TODO: Revise all class methods that were once prompts and now rely on the Prompter class, look for notes throughout
 // TODO: refactor where needed here in Game if methods need it - building more methods to cover duplicates if needed
 
-public class Game {
+public class Game
+{
     Board board = new Board();
     int[] eliminationRounds = {10, 5, 5, 3, 1};
 
@@ -19,7 +20,8 @@ public class Game {
     Host host = new Host();
     Prompter prompter = new Prompter();
 
-    public void gameStart() {
+    public void gameStart()
+    {
         // ask players name and save the value
         player.setName(prompter.askPlayerName());
         // TODO: Down the road, create options for giving rules if player wants them
@@ -29,7 +31,8 @@ public class Game {
         choosePlayerCase();
     }
 
-    public void choosePlayerCase() {
+    public void choosePlayerCase()
+    {
         // chosenCase will call the prompter to get the case number and save it
         int chosenCase = prompter.chooseCase();
         // check if chosenCase is in the 1-26 range
@@ -46,7 +49,8 @@ public class Game {
         }
     }
 
-    public void playGame() {
+    public void playGame()
+    {
         // may need to create a way to break out out of certain loops if player chooses to
         // accept bankOffer at any given point - maybe not. Tests will reveal this.
         while (Board.board.size() > 1) {
@@ -59,7 +63,8 @@ public class Game {
         finalRound();
     }
 
-    public void playRound(int numberOfEliminations) {
+    public void playRound(int numberOfEliminations)
+    {
         // create loop for the round with numberOfEliminations
         for (int i = 0; i < numberOfEliminations; i++) {
             // call prompter.askCaseChoice(player.getName()) to prompt player to choose case between 1-26
@@ -91,7 +96,8 @@ public class Game {
         }
     }
 
-    public void finalRound() {
+    public void finalRound()
+    {
 //        DONE: Call method in Host to get final case
         Case finalCase = host.grabFinalCase();
 //        DONE: Get playercase
