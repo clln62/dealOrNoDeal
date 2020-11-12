@@ -2,6 +2,9 @@ package com.game.dealornodeal;
 
 import com.game.dealornodeal.user.Prompter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 // TODO: create a game constructor that takes a prompter and initilizes fields
 // DONE: put all prompts/dialog in the prompter class
 // DONE: create a prompter and main class
@@ -20,7 +23,9 @@ public class Game {
         // ask players name and save the value
         player.setName(prompter.askPlayerName());
         // TODO: Down the road, create options for giving rules if player wants them
+        prompter.seeGameRules(player.getName());
         // After rules option, kick off the game with the first case choice
+        System.out.println("\n" + "We'll start by letting you claim your first case before we start the elimination round.");
         choosePlayerCase();
     }
 
@@ -58,13 +63,17 @@ public class Game {
         // create loop for the round with numberOfEliminations
         for (int i = 0; i < numberOfEliminations; i++) {
             // call prompter.askCaseChoice(player.getName()) to prompt player to choose case between 1-26
+            List<Integer> available = new ArrayList<>();
+            for(Case briefcase : Board.getBoard()) {
+                available.add(briefcase.getCaseNumber());
+            }
+            System.out.println("Available cases to eliminate are: " + available);
             int chosenCase = prompter.askCaseChoice(player.getName());
             // DONE: revise host.grabCase() to take in chosenCase from prompter
             // call host.grabCase(chosenCase)
             while (!board.caseAvailable(chosenCase)) {
-                // NOTE: This can be revised later to show the available cases, but will just prevent player from
-                // continuing until a valid available case is entered
                 System.out.println("\n" + "Case number " + chosenCase + " has already been eliminated. Please enter valid number.");
+                System.out.println("Available cases to eliminate are: " + available);
                 chosenCase = prompter.askCaseChoice(player.getName());
             }
             host.grabCase(chosenCase);

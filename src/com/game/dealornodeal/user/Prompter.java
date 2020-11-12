@@ -28,9 +28,9 @@ public class Prompter {
 //            System.out.println("\n" + "Invalid input: " + caseNumber + ". Please enter number between 1-26.");
 //            askCaseChoice(playerName, cases);
 //        }
-        if (!availableCases(caseNumber)) {
-            askCaseChoice(playerName);
-        }
+//        if (!availableCases(caseNumber)) {
+//            askCaseChoice(playerName);
+//        }
 
         return caseNumber;
     }
@@ -86,7 +86,7 @@ public class Prompter {
 
     // PLAYER "METHODS"
     public int chooseCase() {
-        System.out.print("\n" + "Which case would you like to hold onto until our final round?");
+        System.out.print("Which case would you like to hold onto until our final round?");
         int chosenCase = input.nextInt();
 
         if (!availableCases(chosenCase)) {
@@ -101,11 +101,38 @@ public class Prompter {
         boolean isAvailable = true;
         if(!Board.caseAvailable(caseNumber)) {
             isAvailable = false;
-            System.out.println("\n" + "Invalid input: " + caseNumber + ". Please enter a case number still available.");
+            System.out.println("\n" + "Invalid input: " + caseNumber + ". Please enter a case number available.");
+
+            List<Integer> available = new ArrayList<>();
             for(Case briefcase : Board.getBoard()) {
-                System.out.println(briefcase.getCaseNumber() + " is still available.");
+                available.add(briefcase.getCaseNumber());
             }
+            System.out.println("Available cases to choose from are: " + available);
         }
         return isAvailable;
+    }
+
+    public void seeGameRules(String playerName) {
+        System.out.print("\n" + "Welcome to Deal or No Deal, " + playerName + ". Would you like to know the game rules?" + "\n" +
+                "Enter Y for yes - show me the rules or N for no - proceed without rules.");
+        String response = input.next();
+
+        if (response.toUpperCase().equals("Y")) {
+            gameRules();
+        }
+    }
+
+    private void gameRules() {
+        System.out.println("\n" +
+                "How to play Deal or now Deal:" + "\n" +
+                "At the start of the game, 26 cases with dollar values ranging from $0.01-$1,000,000 are available for the player." + "\n" +
+                "The player claims one case or a box at the start of the game," + "\n" +
+                "without its contents being revealed. (Enter a case number between 1-26.)" + "\n" +
+                "The contestant then chooses the other cases or boxes, one at a time, " + "\n" +
+                "to be immediately opened and removed from play. (Answered with Y for yes and N for no.)" + "\n" +
+                "Throughout the game, the player is offered an amount of money or prizes to quit,"  + "\n" +
+                "being asked the titular question, \"Deal or no deal?\" (Answer with Y for deal or N for no deal.)" + "\n" +
+                "If the contestant rejects every deal and eliminates all the other cases or boxes," + "\n" +
+                "the player keeps the money that was in the original case or box.");
     }
 }
