@@ -2,6 +2,7 @@ package com.game.dealornodeal.user;
 
 import com.game.dealornodeal.Case;
 
+import java.lang.reflect.AnnotatedArrayType;
 import java.util.*;
 
 public class Prompter {
@@ -12,29 +13,39 @@ public class Prompter {
         this.input = input;
     }
 
-    public Prompter()
-    {
-
-    }
-
-
     // HOST "METHODS"
     public String askPlayerName() {
-        System.out.print("What is your name?");
+        System.out.print("Welcome to Deal or No Deal" + "\n" + "What is your name?");
         String name = input.nextLine();
         return name;
     }
 
     public int askCaseChoice(String playerName) {
-        System.out.print(playerName + ": which case would you like to eliminate?");
-
-        int caseNumber = input.nextInt();
+        int caseNumber = 0;
+        do {
+            System.out.print(playerName + ": which case would you like to eliminate?");
+            while (!input.hasNextInt()) {
+                String invalidInput = input.nextLine();
+                System.out.println("Invalid input. Please enter a valid case number.");
+            }
+            caseNumber = input.nextInt();
+        } while (caseNumber == 0);
 
         return caseNumber;
     }
 
     public String dealOrNoDeal() {
+//        String answer = "";
+//        do {
+//            System.out.print("Deal or No Deal? - (Please respond with a Y for Deal and N for No Deal.)");
+//            while (!input.hasNext()) {
+//
+//            }
+//
+//        } while (!answer.equals("Y") || !answer.equals("N"));
+
         System.out.print("Deal or No Deal? - (Please respond with a Y for Deal and N for No Deal.)");
+
         String answer = input.next();
         if (answer.toUpperCase().equals("N") || answer.toUpperCase().equals("Y")) {
             return answer;
@@ -42,7 +53,7 @@ public class Prompter {
             System.out.println("\n" + answer + " is not a valid input. Please respond with a Y for Deal and N for No Deal." + "\n");
             dealOrNoDeal();
         }
-        return null;
+        return answer;
     }
 
     public void presentCases(Case finalCase, Case chosenCase) {
@@ -65,10 +76,17 @@ public class Prompter {
     }
 
     // PLAYER "METHODS"
-    public int chooseCase()
-    {
-        System.out.print("Which case would you like to hold onto until our final round?");
-        int chosenCase = input.nextInt();
+    public int chooseCase() {
+        int chosenCase = 0;
+
+        do {
+            System.out.print("Which case would you like to hold onto until our final round?");
+            while (!input.hasNextInt()) {
+                String invalidInput = input.nextLine();
+                System.out.println("Invalid input. Please enter number between 1-26.");
+            }
+            chosenCase = input.nextInt();
+        } while (chosenCase == 0);
 
         return chosenCase;
     }
@@ -76,8 +94,8 @@ public class Prompter {
     // GENERAL USE "METHODS"
 
     public void seeGameRules(String playerName) {
-        System.out.print("\n" + "Welcome to Deal or No Deal, " + playerName + ". Would you like to know the game rules?" + "\n" +
-                "Enter Y for yes - show me the rules or N for no - proceed without rules.");
+        System.out.print("\n" + playerName + ", would you like to know the game rules?" + "\n" +
+                "Enter Y for yes - show me the rules or any other character for no - proceed without rules.");
         String response = input.next();
 
         if (response.toUpperCase().equals("Y")) {
