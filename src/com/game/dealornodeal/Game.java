@@ -2,47 +2,31 @@ package com.game.dealornodeal;
 
 import com.game.dealornodeal.user.Prompter;
 
-import java.util.ArrayList;
 import java.util.List;
 
-// TODO: create a game constructor that takes a prompter and initilizes fields
-// DONE: put all prompts/dialog in the prompter class
-// DONE: create a prompter and main class
-// TODO: Revise all class methods that were once prompts and now rely on the Prompter class, look for notes throughout
-// TODO: refactor where needed here in Game if methods need it - building more methods to cover duplicates if needed
 
-public class Game
-{
-    Board board = new Board();
+public class Game {
     int[] eliminationRounds = {10, 5, 5, 3, 1};
 
+    Board board = new Board();
     Player player = new Player();
     Host host = new Host();
     Prompter prompter = new Prompter();
 
-    public void gameStart()
-    {
-        // ask players name and save the value
+    public void gameStart() {
         player.setName(prompter.askPlayerName());
-        // TODO: Down the road, create options for giving rules if player wants them
         prompter.seeGameRules(player.getName());
-        // After rules option, kick off the game with the first case choice
         System.out.println("\n" + "We'll start by letting you claim your first case before we start the elimination round.");
         choosePlayerCase();
     }
 
-    public void choosePlayerCase()
-    {
-        // chosenCase will call the prompter to get the case number and save it
+    public void choosePlayerCase() {
         int chosenCase = prompter.chooseCase();
-        // check if chosenCase is in the 1-26 range
         if (chosenCase >= 1 && chosenCase <= 26) {
             System.out.println("\n" + player.getName() + " has chosen " + chosenCase + " to hold onto through each round.");
-            // DONE: revise player.chooseCase() to take in int chosenCase and find the case needed to save to player
             player.chooseCase(chosenCase);
             playGame();
         }
-        // give invalid message and continue to call method until valid entry has been met
         else {
             System.out.println("\n" + chosenCase + " is an invalid entry.");
             board.caseAvailableList();
@@ -50,72 +34,54 @@ public class Game
         }
     }
 
-    public void playGame()
-    {
-        // may need to create a way to break out out of certain loops if player chooses to
-        // accept bankOffer at any given point - maybe not. Tests will reveal this.
+    public void playGame() {
         while (Board.board.size() > 1) {
             for (int i = 0; i < eliminationRounds.length; i++) {
                 if (player.isWantsToContinue()) playRound(eliminationRounds[i]);
                 else return;
             }
         }
-        // call finalRound()
         finalRound();
     }
 
     public void playRound(int numberOfEliminations)
     {
-        // create loop for the round with numberOfEliminations
         for (int i = 0; i < numberOfEliminations; i++) {
-            // call prompter.askCaseChoice(player.getName()) to prompt player to choose case between 1-26
             List available = board.caseAvailableList();
             int chosenCase = prompter.askCaseChoice(player.getName());
-            // DONE: revise host.grabCase() to take in chosenCase from prompter
-            // call host.grabCase(chosenCase)
+
             while (!board.caseAvailable(chosenCase)) {
-                System.out.println("\n" + "Case number " + chosenCase + " has already been eliminated. Please enter valid number.");
+                if (chosenCase < 1 || chosenCase > 26) {
+                    System.out.println("\n" + chosenCase + " is not a valid case number.");
+                }
+                else {
+                    System.out.println("\n" + "Case number " + chosenCase + " has already been eliminated. Please enter valid number.");
+                }
                 System.out.println("Available cases to eliminate are: " + available);
                 chosenCase = prompter.askCaseChoice(player.getName());
             }
             host.grabCase(chosenCase);
-            // all checks for valid number and search for case is done in other classes - Host and Board
-            // DONE: ensure that user returns to playRound at same i "count" if entry is invalid and they need to call another number
-            // Case is presented to player in Host
         }
 
         if (board.board.size() > 1) {
-            // call host.callBanker()
             host.callBanker(player.getChosenCase());
             String dealOrNoDealResponse = prompter.dealOrNoDeal();
-            // DONE: revise player.acceptOrDeclineDeal to take in dealOrNoDealResponse and proceed accordingly
             player.acceptOrDeclineDeal(dealOrNoDealResponse);
         }
     }
 
-    public void finalRound()
-    {
-//        DONE: Call method in Host to get final case
+    public void finalRound() {
         Case finalCase = host.grabFinalCase();
-//        DONE: Get playercase
         Case chosenCase = player.getChosenCase();
-//        DONE: Show player their case and the games case
         prompter.presentCases(finalCase, chosenCase);
-//        DONE: getFinalOffer
-//                DONE: PresentFinalOffer
+
         host.callBanker(player.getChosenCase());
-//        DONE: Ask Player what they want to do
-//            DONE: If accepts offer
-//        DONE: Call player.acceptOffer
         player.acceptOrDeclineDeal(prompter.dealOrNoDeal());
-//        If swap
+
         if (prompter.askToSwap(finalCase, chosenCase) && player.isWantsToContinue()) {
-            //        host.revealCase(finalCase)
             host.revealCase(finalCase);
         }
-//        If declines offer
         else if (player.isWantsToContinue()) {
-//        host.revealCaes(playerCase)
             host.revealCase(chosenCase);
         }
     }
