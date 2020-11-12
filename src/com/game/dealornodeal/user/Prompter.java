@@ -5,7 +5,17 @@ import com.game.dealornodeal.Case;
 import java.util.*;
 
 public class Prompter {
-    Scanner input = new Scanner(System.in);
+    private Scanner input;
+
+    public Prompter(Scanner input)
+    {
+        this.input = input;
+    }
+
+    public Prompter()
+    {
+
+    }
 
 
     // HOST "METHODS"

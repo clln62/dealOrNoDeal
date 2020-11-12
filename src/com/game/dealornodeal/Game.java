@@ -11,7 +11,12 @@ public class Game {
     Board board = new Board();
     Player player = new Player();
     Host host = new Host();
-    Prompter prompter = new Prompter();
+    Prompter prompter;
+
+    public Game(Prompter prompter)
+    {
+        this.prompter = prompter;
+    }
 
     public void gameStart() {
         player.setName(prompter.askPlayerName());
@@ -20,7 +25,7 @@ public class Game {
         choosePlayerCase();
     }
 
-    public void choosePlayerCase() {
+    void choosePlayerCase() {
         int chosenCase = prompter.chooseCase();
         if (chosenCase >= 1 && chosenCase <= 26) {
             System.out.println("\n" + player.getName() + " has chosen " + chosenCase + " to hold onto through each round.");
@@ -34,7 +39,7 @@ public class Game {
         }
     }
 
-    public void playGame() {
+    void playGame() {
         while (Board.board.size() > 1) {
             for (int i = 0; i < eliminationRounds.length; i++) {
                 if (player.isWantsToContinue()) playRound(eliminationRounds[i]);
@@ -44,10 +49,11 @@ public class Game {
         finalRound();
     }
 
-    public void playRound(int numberOfEliminations)
+    boolean playRound(int numberOfEliminations)
     {
+        boolean result = false;
         for (int i = 0; i < numberOfEliminations; i++) {
-            List available = board.caseAvailableList();
+            List<Integer> available = board.caseAvailableList();
             int chosenCase = prompter.askCaseChoice(player.getName());
 
             while (!board.caseAvailable(chosenCase)) {
@@ -59,6 +65,7 @@ public class Game {
                 }
                 System.out.println("Available cases to eliminate are: " + available);
                 chosenCase = prompter.askCaseChoice(player.getName());
+                result = true;
             }
             host.grabCase(chosenCase);
         }
@@ -68,9 +75,10 @@ public class Game {
             String dealOrNoDealResponse = prompter.dealOrNoDeal();
             player.acceptOrDeclineDeal(dealOrNoDealResponse);
         }
+        return result;
     }
 
-    public void finalRound() {
+    void finalRound() {
         Case finalCase = host.grabFinalCase();
         Case chosenCase = player.getChosenCase();
         prompter.presentCases(finalCase, chosenCase);
